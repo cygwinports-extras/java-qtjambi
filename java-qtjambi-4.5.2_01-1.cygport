@@ -1,0 +1,58 @@
+JAVA_CLASSPATH="xalan.jar:xercesImpl.jar"
+inherit qt4-qmake ant
+
+DESCRIPTION="Java Qt4 bindings"
+HOMEPAGE="http://gitorious.org/qt-jambi"
+SRC_URI="http://get.qt.nokia.com/qtjambi/source/qtjambi-src-lgpl-${PV}.tar.gz"
+SRC_DIR="qtjambi-src-lgpl-${PV}"
+
+PATCH_URI="
+	mirror://portage/dev-java/qtjambi/files/configuration-4.5.0_p1.patch
+	mirror://portage/dev-java/qtjambi/files/generator-4.5.0_p1.patch
+	4.5.2_01-cygwin.patch
+	4.5.2_01-jdk15.patch
+"
+
+export QTDIR=${QT4_QTDIR}
+
+src_compile() {
+	local myconf="-Dgentoo.opengl=true -Dgentoo.phonon=true \
+	              -Dgentoo.webkit=true -Dgentoo.xmlpatterns=true"
+
+	lndirs
+	cd ${B}
+	cygant ${myconf} init generator.xmlmerge
+
+	pushd generator
+		# generator.compile
+		cygqmake4
+		cygmake
+	popd
+
+	cygant ${myconf} generator.run
+
+	# library.native.compile
+	cygqmake4
+	cygmake
+
+	cygant ${myconf} library.java library.designer
+
+	# opengl demos requires java-jogl
+#	cygant ${myconf} examples
+
+	cygjavadoc -d javadoc $(find com/trolltech/qt -name '*.java')
+}
+
+src_install() {
+	cd ${B}
+	dobin bin/* lib/*.dll
+	newbin generator/generator.exe qtjambi-generator.exe
+	dojar qtjambi-${PV}.jar qtjambi-designer-${PV}.jar
+	dojavadoc javadoc/
+	doanttask ant-qtjambi.jar
+
+	qt4pluginto designer
+	doqt4plugin plugins/designer/*.dll
+
+	dodoc changes-${PV} *.TXT LICENSE* readme.html
+}

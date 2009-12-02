@@ -1,0 +1,20 @@
+ecj default source is 1.4, not compatible with target 1.5
+
+--- origsrc/qtjambi-src-lgpl-4.5.2_01/build.xml	2009-12-01 19:39:36.082645600 -0600
++++ src/qtjambi-src-lgpl-4.5.2_01/build.xml	2009-12-01 20:46:46.211872700 -0600
+@@ -138,6 +138,7 @@
+              fork="true"
+              destdir="${outputDir}"
+              debug="true"
++             source="1.5"
+              target="1.5">
+         <src path="${outputDir}"/>
+         <src path="${sourceDir}"/>
+@@ -198,6 +199,7 @@
+            debug="true"
+            fork="true"
+            memoryMaximumSize="1024m"
++           source="1.5"
+            target="1.5">
+             <src path="${outputDir}"/>
+             <src path="${sourceDir}"/>

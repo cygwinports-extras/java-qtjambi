@@ -1,0 +1,66 @@
+java-qtjambi
+------------------------------------------
+Qt Jambi is the Qt library made available to Java. The technology 
+provides new possibilities for both Java and C++ programmers: It enables 
+Java developers to take the advantage of Qt's features from within Java 
+Standard Edition 5.0 and Java Enterprise Edition 5.0 as well as later 
+versions. In addition, Qt Jambi also enables C++ programmers to easily 
+integrate their Qt code with Java by providing the Qt Jambi generator.
+
+Runtime requirements:
+  cygwin-1.7.0-67
+  libgcc1-4.3.4-1
+  libphonon4-4.3.1-2
+  libQtCore4-4.5.3-1
+  libQtDesigner4-4.5.3-1
+  libQtGui4-4.5.3-1
+  libQtNetwork4-4.5.3-1
+  libQtOpenGL4-4.5.3-1
+  libQtSql4-4.5.3-1
+  libQtSvg4-4.5.3-1
+  libQtWebKit4-4.5.3-1
+  libQtXml4-4.5.3-1
+  libQtXmlPatterns4-4.5.3-1
+  libstdc++6-4.3.4-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  ant-1.7.1-1
+  binutils-2.19.51-1
+  cygport-0.9.10-1
+  gcc4-core-4.3.4-1
+  gcc4-g++-4.3.4-1
+  jamvm-1.5.3-1
+  java-xalan-2.7.1-1
+  java-xerces2-2.9.1-1
+  make-3.81-2
+
+Canonical website:
+  http://qt.gitorious.org/qt-jambi
+
+Canonical download:
+  http://get.qt.nokia.com/qtjambi/source/
+
+-------------------------------------------
+
+Build instructions:
+  unpack java-qtjambi-4.5.2_01-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./java-qtjambi-4.5.2_01-X.cygport all
+
+This will create:
+  /usr/src/java-qtjambi-4.5.2_01-X-src.tar.bz2
+  /usr/src/java-qtjambi-4.5.2_01-X.tar.bz2
+
+-------------------------------------------
+
+Port Notes:
+
+----- version 4.5.2_01-1 -----
+Initial release for Cygwin 1.7.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/
