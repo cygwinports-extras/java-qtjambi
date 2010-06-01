@@ -3,7 +3,7 @@ inherit qt4-qmake ant
 
 DESCRIPTION="Java Qt4 bindings"
 HOMEPAGE="http://gitorious.org/qt-jambi"
-SRC_URI="http://get.qt.nokia.com/qtjambi/source/qtjambi-src-lgpl-${PV}.tar.gz"
+SRC_URI="mirror://qt/qtjambi/source/qtjambi-src-lgpl-${PV}.tar.gz"
 SRC_DIR="qtjambi-src-lgpl-${PV}"
 
 PATCH_URI="
